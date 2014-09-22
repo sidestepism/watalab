@@ -10,8 +10,7 @@ var $interimSpan = document.querySelector('#interim_span');
 
 // 音声認識開始のメソッド
 function start () {
-    recognition = new webkitSpeechRecognition();
-    recognition.lang = "ja-JP"
+
     // 以下2点がポイント！！
     // 継続的に処理を行い、不確かな情報も取得可能とする.
     recognition.continuous = true;
