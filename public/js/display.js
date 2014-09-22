@@ -3,19 +3,23 @@ var recognizer_max_speech_ids = [];
 
 socket.on('recognition result', function(data) {
     var $recognition_result = document.querySelector('#recognition_result');
+    console.log(data)
 
-    if (!data.recognizer_id) console.error('recognizer_id not found');
+    if (!data.recognizer_id){
+    	console.error('recognizer_id not found');
+    }
+    var r_id = data.recognizer_id;
 
-    if (recognizer_max_speech_ids[data.recognizer_id]) {
-        console.log('new recognizer detected', data.recognizer_id);
-        recognizer_max_speech_ids[data.recognizer_id] = 0;
+    if (!recognizer_max_speech_ids[r_id]) {
+        console.log('new recognizer detected', r_id);
+        recognizer_max_speech_ids[r_id] = -1;
     }
 
     for (var i = 0; i < data.results.length; i++) {
         // 結果
         var res = data.results[i];
-        // 認識器のID
-        var r_id = data.recognizer_id;
+
+        var dom_id = "fragment_" + r_id + "_" + i;
 
         if (recognizer_max_speech_ids[r_id] < i) {
             // 新しい文がきたっぽいからDOMをつくろう
@@ -24,16 +28,19 @@ socket.on('recognition result', function(data) {
             // <div class="fragment" id="fragment_01234">
             // <span class="final"></span><span class="interim"></span>
             // </div>
-            
+
+            console.log('make dom');
+
             var newItem = document.createElement('div');
-            newItem.class = "fragment";
-            newItem.id = "fragment_" + r_id;
+            newItem.className = "fragment";
+            newItem.id = dom_id;
             $recognition_result.appendChild(newItem);
 
             var $finalSpan = document.createElement('span');
-            $finalSpan.class = "final";
+            $finalSpan.className = "final";
+
             var $interimSpan = document.createElement('span');
-            $interimSpan.class = "interim";
+            $interimSpan.className = "interim";
 
             newItem.appendChild($finalSpan);
             newItem.appendChild($interimSpan);
@@ -43,13 +50,14 @@ socket.on('recognition result', function(data) {
         }
         var interim = "";
         var final = "";
+        console.log(res.transcript)
         if (res.isFinal) {
             final += res.transcript;
         } else {
             interim += res.transcript;
         }
 
-        $("#fragment_" + r_id + " .final").text(final);
-        $("#fragment_" + r_id + " .interim").text(interim);
+        $("#" + dom_id + " .final").text(final);
+        $("#" + dom_id + " .interim").text(interim);
     };
 });

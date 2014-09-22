@@ -7,13 +7,20 @@
 		background-color: black;
 	}
 
-	div#recognition{
-		color: #333;
+	div#recognition_result{
+		color: #000;
 		font-size: 3em;
-		background-color: rgba(255,255,255,0.5)
-
-
+		background-color: rgba(255,255,255,0.5)		
 	}
+
+	div#recognition_result div.fragment{
+		margin: 10px 0;
+	}
+
+	div#recognition_result div.fragment span.interim{
+		color: #333;
+	}
+
 	embed#movie{
 		position: fixed;
 		top: 0;
@@ -26,10 +33,8 @@
 </head>
 <body>
 
-	<embed id="movie" src="./movie{/MVI_3877.MOV" width="1024" height="768"></embed>
+	<embed id="movie" src="./movie/MVI_3877.MOV" width="1024" height="768"></embed>
 	<div id="recognition_result">
-	<span id="final_span">test</span>
-	<span id="interim_span">interim</span>		
 	</div>
 	<script src="/js/jquery.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
