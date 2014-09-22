@@ -20,20 +20,20 @@ io.on('connection', function (socket) {
 
 	// @todo add an unique data.recognizer_id
 	// for debug!!
-	var data = {
-		recognizer_id: 1,
-		results: [
-			{isFinal: true, transcript: "わたしはりんごアレルギーです"},
-			{isFinal: true, transcript: "だからりんご狩りにいってもりんごが食べられない"},
-			{isFinal: false, transcript: "つらいなあ"}
-		]
-	}
+	// var data = {
+	// 	recognizer_id: 1,
+	// 	results: [
+	// 		{isFinal: true, transcript: "わたしはりんごアレルギーです"},
+	// 		{isFinal: true, transcript: "だからりんご狩りにいってもりんごが食べられない"},
+	// 		{isFinal: false, transcript: "つらいなあ"}
+	// 	]
+	// }
 	
-	setInterval(function() {
-		socket.emit('recognition result', data);
-	}, 1000);
+	// setInterval(function() {
+	// 	socket.emit('recognition result', data);
+	// }, 1000);
 
-	setInterval(function() {
-		data.results.push({isFinal: false, transcript: "つらい"});
-	}, 3500);
+	// setInterval(function() {
+	// 	data.results.push({isFinal: false, transcript: "つらい"});
+	// }, 3500);
 });
