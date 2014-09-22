@@ -8,6 +8,7 @@ server.listen(process.env.PORT || 80);
 app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function (socket) {
+	console.log('connected');
 	socket.on('speech recognized', function(data) {
 		socket.broadcast.emit('recognition result', data);
 	})
