@@ -8,6 +8,7 @@ socket.on('recognition result', function(data) {
     if (!data.recognizer_id){
     	console.error('recognizer_id not found');
     }
+    
     var r_id = data.recognizer_id;
 
     if (!recognizer_max_speech_ids[r_id]) {
