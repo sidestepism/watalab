@@ -20,7 +20,7 @@ function start () {
     $interimSpan.textContent = ""
     $finalSpan.textContent = ""
     recognition.onresult = function (e) {
-        console.log("result");
+        console.log(e);
         var finalText = '';
         var interimText = '';
         for (var i = 0; i < e.results.length; i++) {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <DOCTYPE html>
 <html class="no-js consumer" lang=“ja”>
 
@@ -92,4 +93,44 @@ a.c1 {font-weight: normal;}
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/recognition.js"></script>
+=======
+
+<!doctype html>
+<html>
+<head>
+	<style>
+	body{
+		background-color: black;
+	}
+
+	div#recognition{
+		color: #333;
+		font-size: 3em;
+		background-color: rgba(255,255,255,0.5)
+
+
+	}
+	embed#movie{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: -100;
+	}
+	</style>
+
+</head>
+<body>
+
+	<embed id="movie" src="./movie{/MVI_3877.MOV" width="1024" height="768"></embed>
+	<div id="recognition_result">
+	<span id="final_span">test</span>
+	<span id="interim_span">interim</span>		
+	</div>
+	<script src="/js/jquery.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/display.js"></script>
+</body>
+</html>
+>>>>>>> 452d5666c256151e6c2a38d86825616162c2d80d
 
