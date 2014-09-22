@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<style>
+	body{
+		background-color: black;
+	}
+
+	div#recognition{
+		color: #333;
+		font-size: 3em;
+		background-color: rgba(255,255,255,0.5)
+
+
+	}
+	embed#movie{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: -100;
+	}
+	</style>
+
+</head>
+<body>
+
+	<embed id="movie" src="./mov/MVI_3877.MOV" width="1024" height="768"></embed>
+	<div id="recognition">
+	<span id="final_span">test</span>
+	<span id="interim_span">interim</span>
+		
+	</div>
+	<script src="jquery.js"></script>
+	<script src="index.js"></script>
+</body>
+</html>
