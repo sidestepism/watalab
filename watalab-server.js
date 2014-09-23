@@ -1,9 +1,18 @@
 var express = require('express');
 var app = express();
+var fs = require('fs');
+var https = require('https');
+var options = {
+    key: fs.readFileSync('./ssl/raw_server.key'), // 秘密鍵
+    cert: fs.readFileSync('./ssl/server.crt'), // 公開鍵
+    passphrase: 'watalab'
+};
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
+var https_server = https.createServer(options, app);
+var io = require('socket.io')(https_server);
 
 server.listen(process.env.PORT || 80);
+https_server.listen(process.env.HTTPS_PORT || 443);
 
 app.use(express.static(__dirname + '/public'));
 

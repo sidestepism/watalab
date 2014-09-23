@@ -1,4 +1,4 @@
-var socket = io('/');
+var socket = io('http://' + location.host + '/');
 var recognizer_max_speech_ids = [];
 
 socket.on('recognition result', function(data) {
@@ -8,7 +8,7 @@ socket.on('recognition result', function(data) {
     if (!data.recognizer_id){
     	console.error('recognizer_id not found');
     }
-    
+
     var r_id = data.recognizer_id;
 
     if (!recognizer_max_speech_ids[r_id]) {
@@ -51,11 +51,11 @@ socket.on('recognition result', function(data) {
         }
         var interim = "";
         var final = "";
-        console.log(res.transcript)
+        console.log(res[0].transcript)
         if (res.isFinal) {
-            final += res.transcript;
+            final += res[0].transcript;
         } else {
-            interim += res.transcript;
+            interim += res[0].transcript;
         }
 
         $("#" + dom_id + " .final").text(final);
