@@ -61,4 +61,16 @@ socket.on('recognition result', function(data) {
         $("#" + dom_id + " .final").text(final);
         $("#" + dom_id + " .interim").text(interim);
     };
+
+    jQuery( function() {
+        autoScroll();
+    } );
+    var $scrollY = 0;
+    function autoScroll() {
+      var $recognition_result = jQuery( '#recognition_result' );
+      $recognition_result.scrollTop( ++$scrollY );
+      if( $scrollY < $recognition_result[0].scrollHeight - $recognition_result[0].clientHeight ){
+        setTimeout( "autoScroll()", 20 );
+      }
+    }
 });
