@@ -11,6 +11,7 @@ var server = require('http').Server(app);
 var https_server = https.createServer(options, app);
 var io = require('socket.io')(https_server);
 
+console.log("http", process.env.PORT || 80, "https", process.env.HTTPS_PORT || 443);
 server.listen(process.env.PORT || 80);
 https_server.listen(process.env.HTTPS_PORT || 443);
 

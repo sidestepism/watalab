@@ -13,13 +13,20 @@ var $interimSpan = document.querySelector('#interim_span');
 function start () {
   recognition = new webkitSpeechRecognition();
   recognition.lang = "ja_JP";
+
   // 以下2点がポイント！！
   // 継続的に処理を行い、不確かな情報も取得可能とする.
   recognition.continuous = true;
   recognition.interimResults = true;
 
-  recognition.onerror =  function(e){ recognition.start(); };
-  recognition.onend = function(e){ recognition.start(); };
+  recognition.onerror = function(e){ 
+    console.log(e.error);
+
+   };
+  recognition.onend = function(e){
+    console.log("end");
+    recognition.start();
+  };
 
   // 音声結果を取得するコールバック
   recognition.onresult = function (e) {
@@ -28,6 +35,13 @@ function start () {
     var finalText = '';
     var interimText = '';
     data.results = e.results;
+    
+    var txt;
+    for(var i = 0; i < data.results.length; i++){
+      txt += "<p>" + data.results[i][0].transcript + "</p>";
+    }
+    $("#results").html(txt);
+
 
     socket.emit('speech recognized', data);
   };
@@ -41,15 +55,7 @@ function stop () {
   nowRecognition = false;
 }
 
-// ボタンアクションの定義
-// document.querySelector('#btn2').onclick = function () {
-//   if (nowRecognition) {
-//     stop();
-//     this.value = '音声認識を継続的に行う';
-//     this.className = '';
-//   } else {
-//     start();
-//     this.value = '音声認識を止める';
-//     this.className = 'select';
-//   }
-// }
+$(function() {
+  start();
+})
+

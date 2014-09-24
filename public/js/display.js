@@ -1,4 +1,4 @@
-var socket = io('http://' + location.host + '/');
+var socket = io('/');
 var recognizer_max_speech_ids = [];
 
 socket.on('recognition result', function(data) {
@@ -11,7 +11,7 @@ socket.on('recognition result', function(data) {
 
     var r_id = data.recognizer_id;
 
-    if (!recognizer_max_speech_ids[r_id]) {
+    if (!recognizer_max_speech_ids.hasOwnProperty(r_id)) {
         console.log('new recognizer detected', r_id);
         recognizer_max_speech_ids[r_id] = -1;
     }
