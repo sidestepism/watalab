@@ -21,6 +21,7 @@ function start () {
 
   recognition.onerror = function(e){ 
     console.log(e.error);
+    $("#results").text($("#results").text() + " " + e.error);
 
    };
   recognition.onend = function(e){
@@ -36,13 +37,13 @@ function start () {
     var interimText = '';
     data.results = e.results;
     
-    var txt;
+    var txt = "";
     for(var i = 0; i < data.results.length; i++){
-      txt += "<p>" + data.results[i][0].transcript + "</p>";
+      var res = data.results[i];
+      txt += "<p>" + res[0].transcript + "</p>";
     }
+    console.log(txt);
     $("#results").html(txt);
-
-
     socket.emit('speech recognized', data);
   };
   recognition.start();
