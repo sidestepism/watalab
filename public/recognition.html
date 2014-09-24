@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html class="no-js consumer" lang=“ja”>
   <style>
     #info {
@@ -38,13 +38,18 @@
       margin: 20px auto;
     }
   </style>
-  <style>
-    a.c1 {font-weight: normal;}
-  </style>
 </head>
 <body class="" id="grid">
-  <div class="browser-landing" id="main">
 
+      <h2>debug</h2>
+      <div id="debug">
+        
+      </div>
+      <h2>results</h2>
+      <div id="results">
+      </div>
+
+  <div class="browser-landing" id="main">
     <div class="compact marquee">
       <div id="div_start">
         <button id="start_button" onclick="start(event)"><img alt="Start" id="start_img"
@@ -77,13 +82,11 @@
           "//www.google.com/chrome">Chrome</a> version 25 or later.
         </p>
       </div>
-
-      <div id="results">
-        <span class="final" id="final_span"></span> <span class="interim" id=
-          "interim_span"></span>
-      </div>
     </div>
+
+
   </body>
+  <script src="/js/jquery.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/recognition.js"></script>
 </html>
