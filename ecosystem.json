@@ -15,7 +15,7 @@
       "host" : "49.212.129.143",
       "port" : "10022",
       "ref"  : "origin/master",
-      "repo" : "git@github.com:sidestepism/watalab.git",
+      "repo" : "https://github.com/sidestepism/watalab.git",
       "path" : "/var/www/webapps/watalab",
       "post-deploy" : "pm2 startOrRestart /var/www/webapps/watalab/ecosystem.json --env production"
     }
