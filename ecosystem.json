@@ -11,7 +11,7 @@
   }],
   "deploy" : {
     "production" : {
-      "user" : "fushimi",
+      "user" : "ryohei",
       "host" : "49.212.129.143",
       "port" : "10022",
       "ref"  : "origin/master",
