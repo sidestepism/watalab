@@ -1,8 +1,14 @@
 var socket = io('/');
 var recognizer_max_speech_ids = [];
 
+socket.on('reset', function() {
+    $(".fragment").hide();
+})
+
 socket.on('recognition result', function(data) {
     var $recognition_result = document.querySelector('#recognition_result');
+
+    var recog
     console.log(data)
 
     if (!data.recognizer_id) {
@@ -31,7 +37,6 @@ socket.on('recognition result', function(data) {
             // </div>
 
             console.log('make dom');
-
             var newItem = document.createElement('div');
             newItem.className = "fragment";
             newItem.id = dom_id;
@@ -49,6 +54,7 @@ socket.on('recognition result', function(data) {
             // いまんとこの最大の speech id を覚えておこう
             recognizer_max_speech_ids[r_id] = i;
         }
+
         var interim = "";
         var final = "";
         console.log(res[0].transcript)
@@ -57,12 +63,12 @@ socket.on('recognition result', function(data) {
         } else {
             interim += res[0].transcript;
         }
-        console.log($("#recognition_result").offset());
-        $('html,body').animate({scrollTop: $("#bottom").offset().top}, 1000);
 
         $("#" + dom_id + " .final").text(final);
         $("#" + dom_id + " .interim").text(interim);
     };
+    $('html,body').animate({
+        scrollTop: $("#bottom").offset().top
+    }, 500);
 
 });
-

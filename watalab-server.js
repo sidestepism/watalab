@@ -18,8 +18,10 @@ https_server.listen(process.env.HTTPS_PORT || 443);
 app.use(express.static(__dirname + '/public'));
 
 var recognizer_id_counter = 1;
+
 io.on('connection', function (socket) {
 	var r_id = recognizer_id_counter ++;
+
 	console.log("client connected (id: " + r_id + ")");
 
 	socket.on('speech recognized', function(data) {
@@ -28,22 +30,32 @@ io.on('connection', function (socket) {
 		socket.broadcast.emit('recognition result', data);
 	});
 
+	socket.on('reset request', function(data) {
+		socket.broadcast.emit('reset');
+	});
+
+
 	// @todo add an unique data.recognizer_id
 	// for debug!!
+
 	// var data = {
 	// 	recognizer_id: 1,
 	// 	results: [
-	// 		{isFinal: true, transcript: "わたしはりんごアレルギーです"},
-	// 		{isFinal: true, transcript: "だからりんご狩りにいってもりんごが食べられない"},
-	// 		{isFinal: false, transcript: "つらいなあ"}
+	// 		{isFinal: true, 0: {transcript: "わたしはりんごがきらい"}},
+	// 		{isFinal: true, 0:{transcript: "りんごはおいしい"}},
+	// 		{isFinal: true, 0:{transcript: "りんごがおいしいことは知っている"}},
 	// 	]
 	// }
 	
+	// var id = 0;
 	// setInterval(function() {
 	// 	socket.emit('recognition result', data);
 	// }, 1000);
 
 	// setInterval(function() {
-	// 	data.results.push({isFinal: false, transcript: "つらい"});
-	// }, 3500);
+	// 	data.results.push({isFinal: false, 0: {transcript: "つらい"+ (id++) }});
+	// }, 50);
+	// setInterval(function() {
+	// 	data.results.push({isFinal: false, 0: {transcript: "つらいつらいつらいつらいつらいつらいつらい"+ (id++)}});
+	// }, 20);
 });

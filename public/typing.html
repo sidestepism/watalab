@@ -35,16 +35,20 @@
 </head>
 <body>
 
-  <h2>debug</h2>
-  <div id="debug">
-  </div>
+  <h2>self recognition</h2>
 
-  <h2>results</h2>
-  <div id="results">
-  </div>
+  <form action="javascript:void(0)" id="self_recognition">
+    <input type="text" id="self_recognition_text" />     
+  </form>
+
+  <p>入力 + Enterでセルフ音声認識</p>
+
+
+  <h2>reset</h2>
+  <input type="button" value="reset" id="reset_button">
 
   </body>
   <script src="/js/jquery.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="/js/recognition.js"></script>
+  <script src="/js/typing.js"></script>
 </html>

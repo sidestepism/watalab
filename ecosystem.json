@@ -1,0 +1,23 @@
+{
+  "apps" : [{
+    "name"      : "MONONOME API",
+    "script"    : "index.js",
+    "env": {
+      "COMMON_VARIABLE": "true"
+    },
+    "env_production" : {
+      "NODE_ENV": "production"
+    }
+  }],
+  "deploy" : {
+    "production" : {
+      "user" : "fushimi",
+      "host" : "133.242.211.204",
+      "port" : "10022",
+      "ref"  : "origin/master",
+      "repo" : "git@bitbucket.org:dsjam/homeme-mock.git",
+      "path" : "/home/fushimi/apps/homeme-mock",
+      "post-deploy" : "pm2 startOrRestart /home/fushimi/apps/homeme-mock/ecosystem.json --env production"
+    }
+  }
+}
