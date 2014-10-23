@@ -37,7 +37,7 @@ socket.on('recognition result', function(data) {
             // </div>
 
             console.log('make dom');
-            var newItem = document.createElement('div');
+            var newItem = document.createElement('span');
             newItem.className = "fragment";
             newItem.id = dom_id;
             $recognition_result.appendChild(newItem);
@@ -63,6 +63,15 @@ socket.on('recognition result', function(data) {
         } else {
             interim += res[0].transcript;
         }
+
+        final += " "
+        interim += " "
+
+        // 私→わたし に変換．
+        final = final.replace("私", "わたし");
+        interim = interim.replace("私", "わたし");
+
+        
 
         $("#" + dom_id + " .final").text(final);
         $("#" + dom_id + " .interim").text(interim);
