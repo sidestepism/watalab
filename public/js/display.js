@@ -68,11 +68,11 @@ socket.on('recognition result', function(data) {
         interim += " "
 
         // 私→わたし に変換．
-        final = final.replace("私", "わたし");
-        interim = interim.replace("私", "わたし");
+        final = final.replace(/私/g, "わたし");
+        interim = interim.replace(/私/g, "わたし");
 
-        final = final.replace("あなた", "わたし");
-        interim = interim.replace("あなた", "わたし");
+        final = final.replace(/あなた/g, "わたし");
+        interim = interim.replace(/あなた/g, "わたし");
         
         $("#" + dom_id + " .final").text(final);
         $("#" + dom_id + " .interim").text(interim);
