@@ -1,6 +1,18 @@
 var socket = io('/');
 var results = []
 
+function type(str) {
+    results.push({
+        isFinal: true,
+        0: {
+            transcript: content
+        }
+    });
+    socket.emit('speech recognized', {
+        results: results
+    });
+}
+
 $(function() {
     $("#self_recognition").submit(function() {
         var content = $("#self_recognition_text").val()
