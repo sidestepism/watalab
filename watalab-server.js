@@ -25,6 +25,7 @@ io.on('connection', function (socket) {
 	console.log("client connected (id: " + r_id + ")");
 
 	socket.on('please say', function(data) {
+		console.log(data);
 		socket.broadcast.emit('please say', data);
 	});
 
