@@ -7,11 +7,21 @@
 		background-color: black;
         font-family: "ヒラギノ明朝 Pro W3","Hiragino Mincho Pro","ＭＳ Ｐ明朝","MS PMincho",serif;
 	}
+	div#black_bar{
+		height: 6em;
+		width: 100%;
+		background-color: black;
+		top: 0px;
+		left: 0px;
+		position: fixed;
+	}
 
 	div#recognition_result{
 		color: #fff;
 		font-size: 5em;
-		/*background-color: rgba(255,255,255,0.5)		*/
+		padding-top: 1em;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 
 	div#recognition_result .fragment{
@@ -35,6 +45,8 @@
 <body>
 
 	<!-- <embed id="movie" src="./movie/MVI_3877.MOV" width="1024" height="768"></embed> -->
+	<div id="black_bar">
+	</div>
 	<div id="recognition_result">
 	</div>
 	<div id="bottom">
