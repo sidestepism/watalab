@@ -1,7 +1,7 @@
 var socket = io('/');
 var results = []
 
-function type(str) {
+function type(content) {
     results.push({
         isFinal: true,
         0: {
