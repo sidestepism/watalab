@@ -12,6 +12,13 @@ function type(content) {
         results: results
     });
 }
+function say(content) {
+    socket.emit('please say', {
+        content: content
+    });
+}
+
+
 
 $(function() {
     $("#self_recognition").submit(function() {
