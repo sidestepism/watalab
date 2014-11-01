@@ -19,17 +19,11 @@ app.use(express.static(__dirname + '/public'));
 
 var recognizer_id_counter = 1;
 
-var spawn = require('child_process').spawn,
-    say   = spawn('say', ['-i']);
-
 io.on('connection', function (socket) {
 	var r_id = recognizer_id_counter ++;
 
 	console.log("client connected (id: " + r_id + ")");
 
-	socket.on('please say', function(data) {
-		socket.broadcast.emit('please say', data);
-	});
 
 	socket.on('speech recognized', function(data) {
 		console.log("recognition result received (id: " + r_id + ")");
