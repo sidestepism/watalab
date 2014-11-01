@@ -24,6 +24,9 @@ io.on('connection', function (socket) {
 
 	console.log("client connected (id: " + r_id + ")");
 
+	socket.on('please say', function(data) {
+		socket.broadcast.emit('please say', data);
+	});
 
 	socket.on('speech recognized', function(data) {
 		console.log("recognition result received (id: " + r_id + ")");
